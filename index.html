@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin the Bottle</title>
+    <!--link this html to a script called index.js-->
+    <script src="index.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            height: 80%;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .left-container {
+            flex: 40%;
+            background-color: #f9eaea;
+            display: flex;
+            flex-direction: column;
+            gap: 5%;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .right-container {
+            flex: 70%;
+            background-color: #f9eaea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .play-button {
+            background-color: #4CAF50;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .spin-button {
+            background-color: #FF5722;
+            color: #fff;
+        }
+
+
+
+
+       .button:active {
+            box-shadow: 5px #666;
+            transform: scale(1.05);
+            background-color: #210097;
+
+        }
+
+        
+
+
+        .bottle-container {
+            background-color: #ffe5da;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 90%;
+            height: 280px;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10%;
+            border-color: rgb(195, 255, 255);
+            border-style: dashed;
+            border-width: 3px;
+            color: #ff0000;
+            font-weight:bold;
+            font-size: 30px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .players {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-left: 20px;
+            margin-right: 10px;
+            margin-top:25px;
+
+        }
+
+        input {
+            background-color: #dacbff;
+
+        }
+        select{
+            background-color: #fcdfc4;
+        }
+
+        .turnPlayer{
+            background-color: aqua;
+            font-size: large;
+            max-width: 70%;
+        }
+        .error-container{
+            margin: 10px;
+        }
+        .error-message{
+            color: red;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        #frase2{
+            margin-bottom: 30px;
+        }
+    
+        input{
+            width: 50%;
+        }
+
+        /*media query to make the div with class container flex-direction coluim when under 500px width*/
+        @media (max-width: 500px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-container {
+                flex: 100%;
+            }
+
+            .right-container {
+                flex: 100%;
+            }
+
+            .bottle-container {
+                height: 90%;
+            }
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-container">
+            <div class="players">
+                <div class="p1-container">
+                    <input type="text" class="playerName1" placeholder="Nombre" id="1">
+                    <!--input type select-->
+                    <select id="p1Sex">
+                        <option value="hombre">H</option>
+                        <option selected="selected" value="mujer">M</option>
+                    </select>          
+                </div>
+                <div class="p2-container">
+                    <input type="text" class="playerName2" placeholder="Nombre" id="2">
+                    <!--input type select-->
+                    <select id="p2Sex">
+                        <option selected="selected" value="hombre">H</option>
+                        <option value="mujer">M</option>
+                    </select>          
+                </div>
+                <div class="p3-container">
+                    <input type="text" class="playerName3" placeholder="Nombre" id="3">
+                    <!--input type select-->
+                    <select id="p3Sex">
+                        <option value="hombre">H</option>
+                        <option selected="selected" value="mujer">M</option>
+                    </select>          
+                </div>
+                <div class="p4-container">
+                    <input type="text" class="playerName4" placeholder="Nombre" id="4">
+                    <!--input type select-->
+                    <select id="p4Sex">
+                        <option selected="selected"value="hombre">H</option>
+                        <option value="mujer">M</option>
+                    </select>          
+                </div>
+                
+    
+            </div>
+
+
+            <button class="button play-button" id="play">JUGAR</button>
+
+            <div class="error-container">
+                <p class="error-message"></p>
+            </div>
+
+        </div>
+        <div class="right-container">
+            <div class="bottle-container">
+                <div class="frase" id="frase1">...</div>
+                <button class="button spin-button" id="spin">GIRA LA BOTELLA!</button>
+                <div class= frase id="frase2">...</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
