@@ -173,7 +173,8 @@ window.onload = function () {
 
 
     async function spin() {
-
+        document.getElementById("frase1").innerHTML="...";
+        document.getElementById("frase2").innerHTML="...";
 
         if (leftContainer[0].style.pointerEvents != "none") {
             document.getElementsByClassName("error-message")[0].innerHTML = "Error! Debes ingresar los nombres de los jugadores y su sexo antes de girar la ruleta.";
