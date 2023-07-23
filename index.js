@@ -215,7 +215,7 @@ window.onload = function () {
 
 
         //si el numero es igual reroll 
-        if (random == random2  ) {
+        if (random == random2) {
             spin();
             return;
         }
@@ -225,6 +225,37 @@ window.onload = function () {
             spin();
             return;
         }
+
+        if (player.sex == "gay" && target.sex == "mujer") {
+            spin();
+            return;
+        }
+
+        if (player.sex == "mujer" && target.sex == "gay") {
+            spin();
+            return;
+        }
+
+        if (player.sex == "gay" && target.sex == "lesbiana") {
+            spin();
+            return;
+        }
+
+        if (player.sex == "lesbiana" && target.sex == "gay") {
+            spin();
+            return;
+        }
+
+        if (player.sex == "lesbiana" && target.sex == "hombre") {
+            spin();
+            return;
+        }
+
+        if (player.sex == "hombre" && target.sex == "lesbiana") {
+            spin();
+            return;
+        }
+
         
 
         await ruleta(35,"turnPlayer",random);
