@@ -41,7 +41,7 @@ window.onload = function () {
     };
 
 
-    async function crearPartida(player, target) {
+    async function crearPartida(player, target, random2) {
         let partida = `${player.name},${target.name}`
         let action = "";
         let jugador1 = player.name;
@@ -101,8 +101,20 @@ window.onload = function () {
         await delay(1000);
 
 
-        frase1.innerHTML = jugador1 + action + "...";
-        frase2.innerHTML = "..."+jugador2 + ".";
+        frase1.innerHTML = `<div class="playerName"><center>${jugador1}</center></div>`;
+
+        await delay(2000);
+
+        frase1.innerHTML += `${action.toUpperCase()}...<p/>`;
+
+        await delay(2000);
+        await ruleta(35,"targetPlayer", random2);
+
+        
+
+        document.getElementById(random2).classList.add("targetPlayer");
+
+        frase2.innerHTML = `<center><div class="playerName">${jugador2}</div></center>`;
         console.log(jugador1+action+jugador2);
 
         
@@ -173,6 +185,16 @@ window.onload = function () {
 
 
     async function spin() {
+
+        if (document.getElementsByClassName("targetPlayer")[0] != null) {
+            document.getElementsByClassName("targetPlayer")[0].classList.remove("targetPlayer");
+        }
+
+        if (document.getElementsByClassName("turnPlayer")[0] != null) {
+            document.getElementsByClassName("turnPlayer")[0].classList.remove("turnPlayer");
+        }
+        
+
         document.getElementById("frase1").innerHTML="...";
         document.getElementById("frase2").innerHTML="...";
 
@@ -205,26 +227,32 @@ window.onload = function () {
         }
         
 
-        await ruleta(50);
+        await ruleta(35,"turnPlayer",random);
 
-        await delay(1000);
+        
+
+        
 
 
-
-
-
-        if (document.getElementsByClassName("turnPlayer")[0] != null) {
-            document.getElementsByClassName("turnPlayer")[0].classList.remove("turnPlayer");
-        }
         document.getElementById(random).classList.add("turnPlayer");
+        
+        
+
+        
+
+        
 
 
 
+        crearPartida(player, target, random2);
 
+        if (document.getElementsByClassName("targetPlayer")[0] != null) {
+            document.getElementsByClassName("targetPlayer")[0].classList.remove("targetPlayer");
+        }
 
-        crearPartida(player, target);
+        
 
-
+        
     }
 
 
@@ -234,13 +262,13 @@ window.onload = function () {
 
 }
 
-async function ruleta(iterations) {
-    let random = Math.floor(Math.random() * 4) + 1;
+async function ruleta(iterations,role, random) {
+    
 
     for (let i = 0; i < iterations; i++) {
-        oldPlayer = document.getElementsByClassName("turnPlayer")[0];
+        oldPlayer = document.getElementsByClassName(role)[0];
         if (oldPlayer != null) {
-            oldPlayer.classList.remove("turnPlayer");
+            oldPlayer.classList.remove(role);
         }
 
         if (random < 4) {
@@ -254,20 +282,28 @@ async function ruleta(iterations) {
         playerText = document.getElementById(random);
 
 
-        playerText.classList.add("turnPlayer");
+        playerText.classList.add(role);
 
-        if (i <= 45) {
+        if (i <= 29) {
             await delay(100);
-        } else {
-            await delay(400);
+        }else if(i <=34){
+            await delay(400)
+        }else {
+            await delay(1000);
         }
 
+        
+        if (oldPlayer != null) {
+            oldPlayer.classList.remove(role);
+        }
+
+        
 
     }
 
-
-
-
+    await delay(200);
+    playerText.classList.remove(role);
+    
 
 
 }
