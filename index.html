@@ -64,6 +64,12 @@
         .spin-button {
             background-color: #FF5722;
             color: #fff;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
         }
 
 
@@ -84,7 +90,7 @@
             margin-top: 20px;
             margin-bottom: 20px;
             width: 90%;
-            height: 280px;
+            height: 98%;
             display: flex;
             gap: 30px;
             justify-content: center;
@@ -100,6 +106,8 @@
             padding-left: 20px;
             padding-right: 20px;
         }
+
+
 
         .players {
             display: flex;
@@ -148,6 +156,13 @@
             width: 50%;
         }
 
+        #bottle{
+            width: 100px;
+            height: 100px;
+        }
+
+
+      
         /*media query to make the div with class container flex-direction coluim when under 500px width*/
         @media (max-width: 500px) {
             .container {
@@ -171,6 +186,8 @@
             color:#ff00d4;
             font-size: 24px;
         }
+
+    
 
 
     </style>
@@ -240,7 +257,7 @@
             <div class="bottle-container">
                 <div class="frase" id="frase1">...</div>
                 <button class="button spin-button" id="spin">GIRA LA BOTELLA!
-                    <img src="bottle.png"/>
+                    <img id="bottle" src="bottle.png"/>
                 </button>
                 <div class= frase id="frase2">...</div>
             </div>
