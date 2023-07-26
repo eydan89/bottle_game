@@ -361,12 +361,18 @@ function devuelveNumAccion() {
 
 
 function spinTheBottle(bottle) {
+    //reproducts sound
+    let audio = new Audio('bottle.mp3');
+    audio.play();
 
     bottle.classList.add('rotating');
     
     
     delay(8000).then(() => {
         bottle.classList.remove('rotating');
+        //stop the audio forever
+        audio.pause();
+        audio.currentTime = 0;
     }
     );
 
