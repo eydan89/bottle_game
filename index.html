@@ -16,7 +16,7 @@
             justify-content: center;
             align-items: center;
             background-color: #f0f0f0;
-            
+
         }
 
         .container {
@@ -64,7 +64,7 @@
         .spin-button {
             background-color: #FF5722;
             color: #fff;
-            display:flex;
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -75,14 +75,14 @@
 
 
 
-       .button:active {
+        .button:active {
             box-shadow: 5px #666;
             transform: scale(1.05);
             background-color: #210097;
 
         }
 
-        
+
 
 
         .bottle-container {
@@ -101,7 +101,7 @@
             border-style: dashed;
             border-width: 3px;
             color: #ff0000;
-            font-weight:bold;
+            font-weight: bold;
             font-size: 14px;
             padding-left: 20px;
             padding-right: 20px;
@@ -115,7 +115,7 @@
             gap: 10px;
             margin-left: 20px;
             margin-right: 10px;
-            margin-top:25px;
+            margin-top: 25px;
 
         }
 
@@ -123,46 +123,66 @@
             background-color: #dacbff;
 
         }
-        select{
+
+        select {
             background-color: #fcdfc4;
         }
 
 
 
-        .turnPlayer{
+        .turnPlayer {
             background-color: aqua;
             font-size: large;
             max-width: 70%;
         }
 
-        .targetPlayer{
+        .targetPlayer {
             background-color: orangered;
             font-size: large;
             max-width: 70%;
         }
-        .error-container{
+
+        .error-container {
             margin: 10px;
         }
-        .error-message{
+
+        .error-message {
             color: red;
             font-size: 14px;
             font-weight: bold;
         }
-        #frase2{
+
+        #frase2 {
             margin-bottom: 30px;
         }
-    
-        input{
+
+        input {
             width: 50%;
         }
 
-        #bottle{
+        #bottle {
             width: 100px;
             height: 100px;
         }
 
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
 
-      
+            to {
+                transform: rotate(3600deg);
+            }
+        }
+
+        .rotating {
+
+            animation: rotate 5s ease-out 1;
+            animation-delay: 0.3s;
+        }
+
+
+
         /*media query to make the div with class container flex-direction coluim when under 500px width*/
         @media (max-width: 500px) {
             .container {
@@ -182,14 +202,10 @@
             }
         }
 
-        .playerName{
-            color:#ff00d4;
+        .playerName {
+            color: #ff00d4;
             font-size: 24px;
         }
-
-    
-
-
     </style>
 </head>
 
@@ -205,9 +221,9 @@
                         <option selected="selected" value="mujer">M</option>
                         <option value="gay">G</option>
                         <option value="lesbiana">L</option>
-                        
 
-                    </select>          
+
+                    </select>
                 </div>
                 <div class="p2-container">
                     <input type="text" class="playerName2" placeholder="Nombre" id="2">
@@ -217,8 +233,8 @@
                         <option value="mujer">M</option>
                         <option value="gay">G</option>
                         <option value="lesbiana">L</option>
-                        
-                    </select>          
+
+                    </select>
                 </div>
                 <div class="p3-container">
                     <input type="text" class="playerName3" placeholder="Nombre" id="3">
@@ -228,21 +244,21 @@
                         <option selected="selected" value="mujer">M</option>
                         <option value="gay">G</option>
                         <option value="lesbiana">L</option>
-                        
-                    </select>          
+
+                    </select>
                 </div>
                 <div class="p4-container">
                     <input type="text" class="playerName4" placeholder="Nombre" id="4">
                     <!--input type select-->
                     <select id="p4Sex">
-                        <option selected="selected"value="hombre">H</option> 
+                        <option selected="selected" value="hombre">H</option>
                         <option value="mujer">M</option>
                         <option value="gay">G</option>
                         <option value="lesbiana">L</option>
-                    </select>          
+                    </select>
                 </div>
-                
-    
+
+
             </div>
 
 
@@ -257,9 +273,9 @@
             <div class="bottle-container">
                 <div class="frase" id="frase1">...</div>
                 <button class="button spin-button" id="spin">GIRA LA BOTELLA!
-                    <img id="bottle" src="bottle.png"/>
+                    <img id="bottle" src="bottle.png" />
                 </button>
-                <div class= frase id="frase2">...</div>
+                <div class=frase id="frase2">...</div>
             </div>
         </div>
     </div>

@@ -5,13 +5,14 @@ window.onload = function () {
     let leftContainer = document.getElementsByClassName("left-container");
     let partidas = [];
     let players = [];
+    const bottle = document.getElementById("bottle");
 
 
     let acciones1 = {
         1: " debe dar un pico a ",
         2: " debe abrazarse durante 2 segundos con ",
         3: " debe dar un suave mordisquito en zona segura a ",
-        4: " debe acariciar en zona segura a ", 
+        4: " debe acariciar en zona segura a ",
         5: " debe quitar una prenda a ",
         6: " debe lamer en zona segura a ",
         7: " debe mirarse a los ojos durante 10 segundos con ",
@@ -22,9 +23,9 @@ window.onload = function () {
         1: " debe besarse en la boca con ",
         2: " debe abrazar por detrás y oler el cuello de ",
         3: " debe dar un suave mordisquito en zona ofrecida a ",
-        4: " debe acariciar en zona sexy a", 
+        4: " debe acariciar en zona sexy a",
         5: " debe quitar una prenda a ",
-        6: " debe lamer en zona sexy a ", 
+        6: " debe lamer en zona sexy a ",
         7: " debe mirarse a los ojos a un palmo de distancia durante 10 segundos con ",
         8: " debe dar un masaje (boca abajo en espalda y pelvis) durante 20 segundos a "
     };
@@ -35,7 +36,7 @@ window.onload = function () {
         3: " debe dar un suave mordisquito en zona ofrecida a ",
         4: " debe acariciar en zona sexual a ",
         5: " debe quitar una prenda (de ropa interior si es posible) a ",
-        6: " debe lamer en zona erógena a ", 
+        6: " debe lamer en zona erógena a ",
         7: " debe mirarse nariz con nariz durante 10 segundos con ",
         8: " debe dar un masaje de cuerpo entero durante 20 segundos a"
     };
@@ -58,9 +59,9 @@ window.onload = function () {
         partida = partida.split(",").sort().join(",");
 
         partida += `,${devuelveNumAccion()},lvl1`
-    
-    
-        if(partidas.includes(partida)){
+
+
+        if (partidas.includes(partida)) {
             //splits partida then substracts "lvl1" and adds "lvl2"
             partida = partida.split(",");
             partida.pop();
@@ -69,19 +70,19 @@ window.onload = function () {
         }
 
         //same with lvl2
-        if(partidas.includes(partida)){
+        if (partidas.includes(partida)) {
             partida = partida.split(",");
             partida.pop();
             partida.push("lvl3");
             partida = partida.join(",");
         }
-   
+
         partidas.push(partida);
 
 
         let actionLvl = partida.split(",")[3];
 
-        
+
 
         if (actionLvl == "lvl1") {
             action = acciones1[partida.split(",")[2]];
@@ -108,17 +109,17 @@ window.onload = function () {
         frase1.innerHTML += `${action.toUpperCase()}...<p/>`;
 
         await delay(2000);
-        await ruleta(35,"targetPlayer", random2);
+        await ruleta(35, "targetPlayer", random2, bottle);
 
-        
+
 
         document.getElementById(random2).classList.add("targetPlayer");
 
         frase2.innerHTML = `<center><div class="playerName">${jugador2}</div></center>`;
-        console.log(jugador1+action+jugador2);
+        console.log(jugador1 + action + jugador2);
 
-        
-    
+
+
     }
 
 
@@ -186,6 +187,7 @@ window.onload = function () {
 
     async function spin() {
 
+
         if (document.getElementsByClassName("targetPlayer")[0] != null) {
             document.getElementsByClassName("targetPlayer")[0].classList.remove("targetPlayer");
         }
@@ -193,10 +195,10 @@ window.onload = function () {
         if (document.getElementsByClassName("turnPlayer")[0] != null) {
             document.getElementsByClassName("turnPlayer")[0].classList.remove("turnPlayer");
         }
-        
 
-        document.getElementById("frase1").innerHTML="...";
-        document.getElementById("frase2").innerHTML="...";
+
+        document.getElementById("frase1").innerHTML = "...";
+        document.getElementById("frase2").innerHTML = "...";
 
         if (leftContainer[0].style.pointerEvents != "none") {
             document.getElementsByClassName("error-message")[0].innerHTML = "Error! Debes ingresar los nombres de los jugadores y su sexo antes de girar la ruleta.";
@@ -256,22 +258,22 @@ window.onload = function () {
             return;
         }
 
-        
 
-        await ruleta(35,"turnPlayer",random);
 
-        
+        await ruleta(35, "turnPlayer", random,bottle);
 
-        
+
+
+
 
 
         document.getElementById(random).classList.add("turnPlayer");
-        
-        
 
-        
 
-        
+
+
+
+
 
 
 
@@ -281,8 +283,8 @@ window.onload = function () {
             document.getElementsByClassName("targetPlayer")[0].classList.remove("targetPlayer");
         }
 
-        
 
+        
         
     }
 
@@ -293,8 +295,8 @@ window.onload = function () {
 
 }
 
-async function ruleta(iterations,role, random) {
-    
+async function ruleta(iterations, role, random,bottle) {
+    spinTheBottle(bottle);
 
     for (let i = 0; i < iterations; i++) {
         oldPlayer = document.getElementsByClassName(role)[0];
@@ -317,25 +319,25 @@ async function ruleta(iterations,role, random) {
 
         if (i <= 29) {
             await delay(100);
-        }else if(i <=34){
+        } else if (i <= 34) {
             await delay(400)
-        }else {
+        } else {
             await delay(1000);
         }
 
-        
+
         if (oldPlayer != null) {
             oldPlayer.classList.remove(role);
         }
 
-        
+
 
     }
 
     await delay(200);
     playerText.classList.remove(role);
-    
 
+  
 
 }
 
@@ -356,3 +358,19 @@ function devuelveNumAccion() {
 
     return accion;
 }
+
+
+function spinTheBottle(bottle) {
+
+    bottle.classList.add('rotating');
+    
+    
+    delay(8000).then(() => {
+        bottle.classList.remove('rotating');
+    }
+    );
+
+}
+
+
+
