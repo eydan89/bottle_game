@@ -43,10 +43,18 @@ window.onload = function () {
 
 
     async function crearPartida(player, target, random2) {
-        let partida = `${player.name},${target.name}`
+
         let action = "";
         let jugador1 = player.name;
         let jugador2 = target.name;
+        let partida = `${jugador1},${jugador2}`
+
+        let numAction = devuelveNumAccion();
+
+
+
+
+
 
         let frase1 = document.getElementById("frase1");
         let frase2 = document.getElementById("frase2");
@@ -58,7 +66,7 @@ window.onload = function () {
         //sort alfabetically partida
         partida = partida.split(",").sort().join(",");
 
-        partida += `,${devuelveNumAccion()},lvl1`
+        partida += `,${numAction},lvl1`
 
 
         if (partidas.includes(partida)) {
@@ -116,6 +124,40 @@ window.onload = function () {
         document.getElementById(random2).classList.add("targetPlayer");
 
         frase2.innerHTML = `<center><div class="playerName">${jugador2}</div></center>`;
+
+
+        //cheating part (nameToNaked es la persona a la que quieres ver desnuda con más probabilidad)
+        /*
+        
+        
+        let nameToNaked = "nombre de la persona";
+        let cheating = false;
+        if (players.some(e => e.name === nameToNaked) && numAction == 5) {
+            cheating = true;
+    
+            let cheatingNumber = Math.random();
+            if (jugador1 != nameToNaked && jugador2 != nameToNaked && cheatingNumber < 0.65) {
+                jugador2 = nameToNaked;
+                document.getElementsByClassName("targetPlayer")[0].classList.remove("targetPlayer");
+    
+                for (let i = 1; i < 5; i++) {
+                    if (document.getElementById(i).value == nameToNaked) {
+                        document.getElementById(i).classList.add("targetPlayer");
+                    }
+                }
+                console.log("Cheating?"+cheating)
+    
+            }
+        }
+
+        */
+
+
+
+
+
+
+
         console.log(jugador1 + action + jugador2);
 
 
@@ -186,6 +228,9 @@ window.onload = function () {
 
 
     async function spin() {
+        //blocks the button for 16 seconds
+        document.getElementsByClassName("spin-button")[0].style.pointerEvents = "none";
+        
 
 
         if (document.getElementsByClassName("targetPlayer")[0] != null) {
@@ -260,7 +305,7 @@ window.onload = function () {
 
 
 
-        await ruleta(35, "turnPlayer", random,bottle);
+        await ruleta(35, "turnPlayer", random, bottle);
 
 
 
@@ -283,9 +328,9 @@ window.onload = function () {
             document.getElementsByClassName("targetPlayer")[0].classList.remove("targetPlayer");
         }
 
+        
+        document.getElementsByClassName("spin-button")[0].style.pointerEvents = "auto";
 
-        
-        
     }
 
 
@@ -295,7 +340,7 @@ window.onload = function () {
 
 }
 
-async function ruleta(iterations, role, random,bottle) {
+async function ruleta(iterations, role, random, bottle) {
     spinTheBottle(bottle);
 
     for (let i = 0; i < iterations; i++) {
@@ -337,7 +382,7 @@ async function ruleta(iterations, role, random,bottle) {
     await delay(200);
     playerText.classList.remove(role);
 
-  
+
 
 }
 
@@ -366,8 +411,8 @@ function spinTheBottle(bottle) {
     audio.play();
 
     bottle.classList.add('rotating');
-    
-    
+
+
     delay(8000).then(() => {
         bottle.classList.remove('rotating');
         //stop the audio forever
