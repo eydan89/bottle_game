@@ -110,7 +110,7 @@ window.onload = function () {
         await delay(1000);
 
 
-        frase1.innerHTML = `<div class="playerName"><center>${jugador1}</center></div>`;
+        frase1.innerHTML = `<div class="playerName">${jugador1}</div>`;
 
         await delay(2000);
 
@@ -123,7 +123,7 @@ window.onload = function () {
 
         document.getElementById(random2).classList.add("targetPlayer");
 
-        frase2.innerHTML = `<center><div class="playerName">${jugador2}</div></center>`;
+        frase2.innerHTML = `<div class="playerName">${jugador2}</div>`;
 
 
         //añade nombre a name to naked si quieres que esa persona acabe desnuda antes que nadie. jijiji
