@@ -126,13 +126,11 @@ window.onload = function () {
         frase2.innerHTML = `<center><div class="playerName">${jugador2}</div></center>`;
 
 
-        //cheating part (nameToNaked es la persona a la que quieres ver desnuda con más probabilidad)
-        /*
-        
-        
-        let nameToNaked = "nombre de la persona";
+        //añade nombre a name to naked si quieres que esa persona acabe desnuda antes que nadie. jijiji
+              
+        let nameToNaked = "";
         let cheating = false;
-        if (players.some(e => e.name === nameToNaked) && numAction == 5) {
+        if (nameToNaked != "" && players.some(e => e.name === nameToNaked) && numAction == 5) {
             cheating = true;
     
             let cheatingNumber = Math.random();
@@ -150,7 +148,7 @@ window.onload = function () {
             }
         }
 
-        */
+        
 
 
 
