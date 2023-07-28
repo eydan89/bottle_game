@@ -9,11 +9,11 @@
     <script src="index.js"></script>
     <style>
         body {
-            margin: 0;
-            padding: 0;
+            margin: 1px;
+            padding: 0px;
             display: flex;
-            height: 99vh;
-            width: 99vw;
+            height: 80vh;
+
             justify-content: center;
             align-items: center;
             background-color: #f0f0f0;
@@ -27,7 +27,8 @@
             border: 2px solid #ccc;
             border-radius: 10px;
             min-height: fit-content;
-            margin-top: 2px;
+            margin-top: 3px;
+            gap: 10px;
         }
 
         .left-container {
@@ -35,10 +36,14 @@
             display: flex;
             flex-direction: column;
             gap: 1%;
-            justify-content: center;
             align-items: center;
             border-radius: 10px;
-            height: auto;
+            height: 30vh;
+
+            border-radius: 10%;
+            border-color: rgb(195, 255, 255);
+            border-style: dashed;
+            border-width: 3px;
 
         }
 
@@ -47,7 +52,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 30px;
+            border-radius: 15px;
+            height: 50vh;
         }
 
         .button {
@@ -159,7 +165,7 @@
 
         .frase {
             text-align: center;
-            height: 10%;
+            height: 5vh;
         }
 
         input {
@@ -169,8 +175,8 @@
         }
 
         #bottle {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
 
         }
 
@@ -189,46 +195,11 @@
             animation: rotate 5.5s ease-out 1;
             animation-delay: 0.1s;
         }
-
-
-
-        /*media query to make the div with class container flex-direction coluim when under 500px width*/
-        @media (max-width: 500px) {
-            #bottle {
-                margin-bottom: 5px;
-            }
-
-            .container {
+        .container {
                 flex-direction: column;
-            }
-
-            .left-container {
-                flex: 100%;
-            }
-
-            .right-container {
-                flex: 100%;
-            }
-
-            .bottle-container {
-                height: 95%;
-            }
-
-            .spin-button {
-                height: 20vh;
-                padding-top: 10px;
-                margin-top: 5px;
-
-            }
+             }
 
 
-
-            .playerName {
-                color: #ff00d4;
-                font-size: 20px;
-                margin: 3px;
-            }
-        }
 
         .playerName {
             color: #ff00dd;
