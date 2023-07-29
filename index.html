@@ -9,12 +9,11 @@
     <script src="index.js"></script>
     <style>
         body {
-            margin: 1px;
-            padding: 0px;
+            margin: 1vh;
+            padding: 1vh;
             display: flex;
-            height: 80vh;
+            height: 99vh;
 
-            justify-content: center;
             align-items: center;
             background-color: #f0f0f0;
 
@@ -22,13 +21,15 @@
 
         .container {
             display: flex;
-            width: 95%;
-            height: 100%;
+            width: 55vh;
+            height: 100vh;
             border: 2px solid #ccc;
             border-radius: 10px;
             min-height: fit-content;
-            margin-top: 3px;
-            gap: 10px;
+            margin-top: 1vh;
+            gap: 1vh;
+            justify-content: center;
+            padding: 1vh;
         }
 
         .left-container {
@@ -44,16 +45,36 @@
             border-color: rgb(195, 255, 255);
             border-style: dashed;
             border-width: 3px;
+            margin-top: 15px;
+            height: fit-content;
 
         }
 
         .right-container {
             background-color: #f9eaea;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             border-radius: 15px;
             height: 50vh;
+            min-height: fit-content;
+            overflow: hidden;
+
+            background-color: #ffe5da;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 5%;
+
+            border-radius: 15px;
+            border-color: rgb(195, 255, 255);
+            border-style: dashed;
+            border-width: 3px;
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 14px;
+
         }
 
         .button {
@@ -79,9 +100,9 @@
             justify-content: center;
             align-items: center;
             gap: 0px;
-            font-size: 15px;
-            padding-top: 5px;
-
+            font-size: 14px;
+            height: 25vh;
+            width: 30vh;
         }
 
 
@@ -95,29 +116,6 @@
         }
 
 
-
-
-        .bottle-container {
-            background-color: #ffe5da;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            width: 90%;
-            height: 95%;
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            border-radius: 15px;
-            border-color: rgb(195, 255, 255);
-            border-style: dashed;
-            border-width: 3px;
-            color: #ff0000;
-            font-weight: bold;
-            font-size: 14px;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
 
 
 
@@ -166,6 +164,7 @@
         .frase {
             text-align: center;
             height: 5vh;
+            margin: 2vh;
         }
 
         input {
@@ -175,8 +174,8 @@
         }
 
         #bottle {
-            width: 120px;
-            height: 120px;
+            width: 20vh;
+            height: 20vh;
 
         }
 
@@ -195,9 +194,10 @@
             animation: rotate 5.5s ease-out 1;
             animation-delay: 0.1s;
         }
+
         .container {
-                flex-direction: column;
-             }
+            flex-direction: column;
+        }
 
 
 
@@ -210,7 +210,7 @@
         .gira {
             margin-top: 13px;
             color: #ffffff;
-            font-weight:bold;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -276,14 +276,14 @@
 
         </div>
         <div class="right-container">
-            <div class="bottle-container">
-                <div class="frase" id="frase1">...</div>
-                <button class="button spin-button" id="spin">
-                    <div class="gira">GIRA LA BOTELLA!</div>
-                    <img id="bottle" src="bottle.png" />
-                </button>
-                <div class=frase id="frase2">...</div>
-            </div>
+
+            <div class="frase" id="frase1">...</div>
+            <button class="button spin-button" id="spin">
+                <div class="gira">GIRA LA BOTELLA!</div>
+                <img id="bottle" src="bottle.png" />
+            </button>
+            <div class=frase id="frase2">...</div>
+
         </div>
     </div>
 </body>
