@@ -1,5 +1,54 @@
-//on start the html next function is called
+
+
+
 window.onload = function () {
+
+    let startButton = document.getElementById("start");
+    let numPlayers = document.getElementById("numPlayers");
+    let startError = document.getElementById("startError");
+
+    const totalPlayers = numPlayers.value;
+    let innerHTML = "";
+
+
+    startButton.addEventListener("click", function () {
+        startError.innerHTML = "";
+
+
+        if (totalPlayers == null || totalPlayers == "") {
+
+            startError.innerHTML = "Por favor Introduce un número de jugadores";
+            return;
+        }
+
+        if (totalPlayers < 3 || totalPlayers > 10) {
+            startError.innerHTML = "El número de jugadores debe estar entre 3 y 10";
+            return;
+        }
+
+
+        for (let i = 1; i <= totalPlayers; i++) {
+            innerHTML += `<div class="p${i}-container">
+                            <input type="text" class="playerName${i}" placeholder="Nombre" id="${i}">
+                                <select id="p${i}Sex">
+                                    <option value="hombre">H</option>
+                                    <option selected="selected" value="mujer">M</option>
+                                    <option value="gay">G</option>
+                                    <option value="lesbiana">L</option>
+                                </select>
+                          </div>`;
+
+        }
+
+        document.getElementById("players").innerHTML = innerHTML;
+
+        document.getElementById("start-container").style.display = "none";
+
+    });
+
+
+
+
     let playButton = document.getElementById("play");
     let spinButton = document.getElementById("spin");
     let leftContainer = document.getElementsByClassName("left-container");
@@ -9,7 +58,7 @@ window.onload = function () {
 
 
     let acciones1 = {
-        1: " debe dar un pico a ",
+        1: " debe dar beso en la mejilla a ",
         2: " debe abrazarse durante 2 segundos con ",
         3: " debe dar un suave mordisquito en zona segura a ",
         4: " debe acariciar en zona segura a ",
@@ -20,10 +69,10 @@ window.onload = function () {
     };
 
     let acciones2 = {
-        1: " debe besarse en la boca con ",
+        1: " debe dar un pico a",
         2: " debe abrazar por detrás y oler el cuello de ",
         3: " debe dar un suave mordisquito en zona ofrecida a ",
-        4: " debe acariciar en zona sexy a",
+        4: " debe acariciar en zona sexy a ",
         5: " debe quitar una prenda a ",
         6: " debe lamer en zona sexy a ",
         7: " debe mirarse a los ojos a un palmo de distancia durante 10 segundos con ",
@@ -31,14 +80,14 @@ window.onload = function () {
     };
 
     let acciones3 = {
-        1: " debe besarse con lengua con ",
-        2: " debe abrazar por detrás durante 5 segundos a ",
-        3: " debe dar un suave mordisquito en zona ofrecida a ",
+        1: " debe besarse apasionadamente con",
+        2: " debe abrazar por detrás y tocar el cuerpo durante 5 segundos a ",
+        3: " debe dar un suave mordisquito en zona sexy a ",
         4: " debe acariciar en zona sexual a ",
         5: " debe quitar una prenda (de ropa interior si es posible) a ",
         6: " debe lamer en zona erógena a ",
         7: " debe mirarse nariz con nariz durante 10 segundos con ",
-        8: " debe dar un masaje de cuerpo entero durante 20 segundos a"
+        8: " debe dar un masaje de cuerpo entero durante 20 segundos a "
     };
 
 
@@ -114,10 +163,10 @@ window.onload = function () {
 
         await delay(2000);
 
-        frase1.innerHTML += `${action.toUpperCase()}...<p/>`;
+        document.getElementById("action").innerHTML = action.toUpperCase()+"<p>...</p>";
 
         await delay(2000);
-        await ruleta(35, "targetPlayer", random2, bottle);
+        await ruleta(35, "targetPlayer", random2, bottle, totalPlayers);
 
 
 
@@ -127,28 +176,28 @@ window.onload = function () {
 
 
         //añade nombre a name to naked si quieres que esa persona acabe desnuda antes que nadie. jijiji
-              
+
         let nameToNaked = "";
         let cheating = false;
         if (nameToNaked != "" && players.some(e => e.name === nameToNaked) && numAction == 5) {
             cheating = true;
-    
+
             let cheatingNumber = Math.random();
             if (jugador1 != nameToNaked && jugador2 != nameToNaked && cheatingNumber < 0.65) {
                 jugador2 = nameToNaked;
                 document.getElementsByClassName("targetPlayer")[0].classList.remove("targetPlayer");
-    
+
                 for (let i = 1; i < 5; i++) {
                     if (document.getElementById(i).value == nameToNaked) {
                         document.getElementById(i).classList.add("targetPlayer");
                     }
                 }
-                console.log("Cheating?"+cheating)
-    
+                console.log("Cheating?" + cheating)
+
             }
         }
 
-        
+        //fin cheating
 
 
 
@@ -157,8 +206,8 @@ window.onload = function () {
 
 
         console.log(jugador1 + action + jugador2);
-
-
+        await delay(500);
+        document.getElementsByClassName("spin-button")[0].style.pointerEvents = "auto";
 
     }
 
@@ -176,39 +225,28 @@ window.onload = function () {
 
 
     playButton.addEventListener("click", function () {
-        let n1 = document.getElementById("1").value;
-        let n2 = document.getElementById("2").value;
-        let n3 = document.getElementById("3").value;
-        let n4 = document.getElementById("4").value;
+        document.getElementsByClassName("error-message")[0].innerHTML = "";
+        let jugadores = [];
 
-        if (n1 == "" || n2 == "" || n3 == "" || n4 == "" || n1 == null || n2 == null || n3 == null || n4 == null) {
-            document.getElementsByClassName("error-message")[0].innerHTML = "Error! Los 4 jugadores deben tener nombre y sexo.";
+        for (let i = 0; i < totalPlayers; i++) {
+            jugadores[i] = {
+                name: document.getElementById(i + 1).value,
+                sex: document.getElementById(`p${i + 1}Sex`).value,
+            }
+
+        }
+
+        for (let i = 0; i < totalPlayers; i++) {
+            if (jugadores[i].name == null || jugadores[i].name == "") {
+                document.getElementsByClassName("error-message")[0].innerHTML = "Error! Los " + totalPlayers + " jugadores deben tener nombre y sexo.";
+            }
+
+        }
+
+        if (document.getElementsByClassName("error-message")[0].innerHTML != "") {
+            jugadores = [];
             return;
         }
-        //create an array with 4 objects
-
-        players = [
-            {
-                name: n1,
-                sex: document.getElementById("p1Sex").value,
-
-            },
-            {
-                name: n2,
-                sex: document.getElementById("p2Sex").value,
-            },
-            {
-                name: n3,
-                sex: document.getElementById("p3Sex").value,
-            },
-            {
-                name: n4,
-                sex: document.getElementById("p4Sex").value,
-            }
-        ];
-
-
-
 
 
 
@@ -220,15 +258,25 @@ window.onload = function () {
         leftContainer[0].style.backgroundColor = "#F9d8dd";
         document.getElementsByClassName("error-message")[0].innerHTML = "";
 
+
+        const players = jugadores;
+        spinButton.addEventListener("click", spin);
+
+        console.log(players)
+
+        globalThis.players = players;
+
     });
 
-    spinButton.addEventListener("click", spin);
+
 
 
     async function spin() {
+
         //blocks the button for 16 seconds
+
         document.getElementsByClassName("spin-button")[0].style.pointerEvents = "none";
-        
+
 
 
         if (document.getElementsByClassName("targetPlayer")[0] != null) {
@@ -249,14 +297,14 @@ window.onload = function () {
         }
 
 
-        //select a random number from 0 to 3
-        let random = Math.floor(Math.random() * 4) + 1;
-        let random2 = Math.floor(Math.random() * 4) + 1;
+        //select a random number from 1 to 10
+        let random = Math.floor(Math.random() * totalPlayers) + 1;
+        let random2 = Math.floor(Math.random() * totalPlayers) + 1;
 
 
 
-        let player = players[random - 1];
-        let target = players[random2 - 1];
+        let player = globalThis.players[random - 1];
+        let target = globalThis.players[random2 - 1];
 
 
         //si el numero es igual reroll 
@@ -303,7 +351,7 @@ window.onload = function () {
 
 
 
-        await ruleta(35, "turnPlayer", random, bottle);
+        await ruleta((35), "turnPlayer", random, bottle, totalPlayers);
 
 
 
@@ -326,8 +374,8 @@ window.onload = function () {
             document.getElementsByClassName("targetPlayer")[0].classList.remove("targetPlayer");
         }
 
-        
-        document.getElementsByClassName("spin-button")[0].style.pointerEvents = "auto";
+
+
 
     }
 
@@ -338,7 +386,7 @@ window.onload = function () {
 
 }
 
-async function ruleta(iterations, role, random, bottle) {
+async function ruleta(iterations, role, random, bottle, totalPlayers) {
     spinTheBottle(bottle);
 
     for (let i = 0; i < iterations; i++) {
@@ -347,7 +395,7 @@ async function ruleta(iterations, role, random, bottle) {
             oldPlayer.classList.remove(role);
         }
 
-        if (random < 4) {
+        if (random < totalPlayers) {
             random++;
         } else {
             random = 1;
@@ -360,9 +408,9 @@ async function ruleta(iterations, role, random, bottle) {
 
         playerText.classList.add(role);
 
-        if (i <= 29) {
+        if (i <= iterations - 5) {
             await delay(100);
-        } else if (i <= 34) {
+        } else if (i <= iterations - 2) {
             await delay(400)
         } else {
             await delay(1000);

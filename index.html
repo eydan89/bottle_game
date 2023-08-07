@@ -19,6 +19,25 @@
 
         }
 
+        .starting-container {
+            display: flex;
+            width: 100%;
+            height: 99vh;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            min-height: fit-content;
+            margin-top: 1vh;
+            gap: 1vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1vh;
+            z-index: +999;
+            background-color: #001135;
+            visibility: visible;
+            position: absolute;
+        }
+
         .container {
             display: flex;
             width: 55vh;
@@ -26,17 +45,17 @@
             border: 2px solid #ccc;
             border-radius: 10px;
             min-height: fit-content;
-            margin-top: 1vh;
-            gap: 1vh;
-            justify-content: center;
-            padding: 1vh;
+            margin-top: 0.1vh;
+            gap: 0.2vh;
+            padding: 0.1vh;
+            visibility: visible;
         }
 
         .left-container {
             background-color: #f9eaea;
             display: flex;
             flex-direction: column;
-            gap: 1%;
+            gap: 0.2vh;
             align-items: center;
             border-radius: 10px;
             height: 30vh;
@@ -44,8 +63,8 @@
             border-radius: 10%;
             border-color: rgb(195, 255, 255);
             border-style: dashed;
-            border-width: 3px;
-            margin-top: 15px;
+            border-width: 2px;
+            margin-top: 1px;
             height: fit-content;
 
         }
@@ -62,10 +81,9 @@
             overflow: hidden;
 
             background-color: #ffe5da;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 1vh;
             display: flex;
-            gap: 5%;
+            gap: 0.3vh;
 
             border-radius: 15px;
             border-color: rgb(195, 255, 255);
@@ -73,12 +91,26 @@
             border-width: 3px;
             color: #ff0000;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 3vh;
+            min-width: 25vh;
 
         }
 
+        #playersAndBottle{
+            display:flex;
+            flex-direction:row;
+            justify-content:center;
+            align-items: stretch;
+            gap:1%;
+            overflow-wrap: anywhere;
+            min-width: 25vh;
+
+
+        }
+        
+
         .button {
-            padding: 15px 25px;
+            padding: 3vh 4vh;
             font-size: 18px;
             border: none;
             border-radius: 15px;
@@ -93,16 +125,23 @@
         }
 
         .spin-button {
-            background-color: #0084ff;
-            color: #fff;
+            background-color: #0084ff00;
+            color: #e412b6;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: center;
             align-items: center;
-            gap: 0px;
+            gap: 3vh;
             font-size: 14px;
             height: 25vh;
             width: 30vh;
+
+
+            padding: 0px 0vh;
+            font-size: 18px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
         }
 
 
@@ -154,7 +193,8 @@
             margin: 10px;
         }
 
-        .error-message {
+        .error-message,
+        #startError {
             color: red;
             font-size: 14px;
             font-weight: bold;
@@ -163,8 +203,8 @@
 
         .frase {
             text-align: center;
-            height: 5vh;
-            margin: 2vh;
+            margin: 0vh;
+            font-size: 3vh;
         }
 
         input {
@@ -174,8 +214,9 @@
         }
 
         #bottle {
-            width: 20vh;
-            height: 20vh;
+            width: 15vh;
+            height: 15vh;
+            margin:0px;
 
         }
 
@@ -203,86 +244,78 @@
 
         .playerName {
             color: #ff00dd;
-            font-size: 20px;
-            margin: 3px;
+            font-size: 2.5vh;
+            overflow-wrap: anywhere;
+            margin: 1vh;
+            min-width: 5vh;
         }
 
-        .gira {
-            margin-top: 13px;
-            color: #ffffff;
+        .startText {
+            color: #ff891b;
             font-weight: bold;
+            font-size: 3vh;
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+
+        #numPlayers {
+            height: 10vh;
+            width: 40vh;
+            font-size: 5vh;
+            text-align: center;
+            color: #e65c00;
+        }
+
+        #startError {
+            text-align: center;
+            font-size: 2.5vh;
+        }
+
+        #action{
+            font-size: 2.5vh;
+            color: #ff0000;
+            text-align:center;
+            margin-bottom: 1vh;
+            overflow-wrap: anywhere;
         }
     </style>
 </head>
 
 <body>
+    <div class="starting-container" id="start-container">
+
+        <p class="startText">INTRODUCE EL NÚMERO DE JUGADORES</p>
+
+        <input type="text" class="numPlayers" id="numPlayers" placeholder="Núm. Jugadores">
+        <button class="button play-button" id="start">JUGAR</button>
+        <div id="startError"></div>
+
+    </div>
     <div class="container">
         <div class="left-container">
-            <div class="players">
-                <div class="p1-container">
-                    <input type="text" class="playerName1" placeholder="Nombre" id="1">
-                    <!--input type select-->
-                    <select id="p1Sex">
-                        <option value="hombre">H</option>
-                        <option selected="selected" value="mujer">M</option>
-                        <option value="gay">G</option>
-                        <option value="lesbiana">L</option>
-
-
-                    </select>
-                </div>
-                <div class="p2-container">
-                    <input type="text" class="playerName2" placeholder="Nombre" id="2">
-                    <!--input type select-->
-                    <select id="p2Sex">
-                        <option selected="selected" value="hombre">H</option>
-                        <option value="mujer">M</option>
-                        <option value="gay">G</option>
-                        <option value="lesbiana">L</option>
-
-                    </select>
-                </div>
-                <div class="p3-container">
-                    <input type="text" class="playerName3" placeholder="Nombre" id="3">
-                    <!--input type select-->
-                    <select id="p3Sex">
-                        <option value="hombre">H</option>
-                        <option selected="selected" value="mujer">M</option>
-                        <option value="gay">G</option>
-                        <option value="lesbiana">L</option>
-
-                    </select>
-                </div>
-                <div class="p4-container">
-                    <input type="text" class="playerName4" placeholder="Nombre" id="4">
-                    <!--input type select-->
-                    <select id="p4Sex">
-                        <option selected="selected" value="hombre">H</option>
-                        <option value="mujer">M</option>
-                        <option value="gay">G</option>
-                        <option value="lesbiana">L</option>
-                    </select>
-                </div>
-
-
+            <div class="players" id="players">
+                <!--jugadores -->
             </div>
-
 
             <button class="button play-button" id="play">JUGAR</button>
 
             <div class="error-container">
                 <p class="error-message"></p>
             </div>
-
         </div>
         <div class="right-container">
+            <div id="playersAndBottle">
+                <div class="frase" id="frase1">GIRA!</div>
+                <button class="spin-button" id="spin">
+                    
+                    <img id="bottle" src="bottle.png" />
+                </button>
+                <div class="frase" id="frase2">GIRA!</div>
+            </div>
+            <div id="action">...</div>
 
-            <div class="frase" id="frase1">...</div>
-            <button class="button spin-button" id="spin">
-                <div class="gira">GIRA LA BOTELLA!</div>
-                <img id="bottle" src="bottle.png" />
-            </button>
-            <div class=frase id="frase2">...</div>
+
+           
 
         </div>
     </div>
