@@ -11,7 +11,16 @@ window.onload = function () {
     let innerHTML = "";
 
 
-    startButton.addEventListener("click", function () {
+    startButton.addEventListener("click", init);
+
+    function init() {
+        delay(1000);
+        start();
+        
+    }
+
+    async function start() {
+
         startError.innerHTML = "";
 
 
@@ -29,14 +38,14 @@ window.onload = function () {
 
         for (let i = 1; i <= totalPlayers; i++) {
             innerHTML += `<div class="p${i}-container">
-                            <input type="text" class="playerName${i}" placeholder="Nombre" id="${i}">
-                                <select id="p${i}Sex">
-                                    <option value="hombre">H</option>
-                                    <option selected="selected" value="mujer">M</option>
-                                    <option value="gay">G</option>
-                                    <option value="lesbiana">L</option>
-                                </select>
-                          </div>`;
+                                <input type="text" class="playerName${i}" placeholder="Nombre" id="${i}">
+                                    <select id="p${i}Sex">
+                                        <option value="hombre">H</option>
+                                        <option selected="selected" value="mujer">M</option>
+                                        <option value="gay">G</option>
+                                        <option value="lesbiana">L</option>
+                                    </select>
+                              </div>`;
 
         }
 
@@ -44,7 +53,9 @@ window.onload = function () {
 
         document.getElementById("start-container").style.display = "none";
 
-    });
+        
+
+    }
 
 
 
@@ -163,7 +174,7 @@ window.onload = function () {
 
         await delay(2000);
 
-        document.getElementById("action").innerHTML = action.toUpperCase()+"<p>...</p>";
+        document.getElementById("action").innerHTML = action.toUpperCase() + "<p>...</p>";
 
         await delay(2000);
         await ruleta(35, "targetPlayer", random2, bottle, totalPlayers);
