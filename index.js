@@ -9,10 +9,6 @@ window.onload = function () {
     let startButton = document.getElementById("start");
     let startError = document.getElementById("startError");
 
-    
-    
-
-
     startButton.addEventListener("click", start);
     
 
