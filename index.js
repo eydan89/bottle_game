@@ -1,13 +1,10 @@
 
-//async function to return numPlayers.value
-async function returnTotal (){
-    return document.getElementById("numPlayers").value;
-}
+
 
 window.onload = function () {
 
     let startButton = document.getElementById("start");
-    let startError = document.getElementById("startError");
+    
 
     startButton.addEventListener("click", start);
     
@@ -16,44 +13,7 @@ window.onload = function () {
 
     
 
-    async function start() {
-        let innerHTML = "";
-        const totalPlayers = await returnTotal();
-        startError.innerHTML = "";
 
-
-        if (totalPlayers == null || totalPlayers == "") {
-
-            startError.innerHTML = "Por favor Introduce un número de jugadores";
-            return;
-        }
-
-        if (totalPlayers < 3 || totalPlayers > 10) {
-            startError.innerHTML = "El número de jugadores debe estar entre 3 y 10";
-            return;
-        }
-
-
-        for (let i = 1; i <= totalPlayers; i++) {
-            innerHTML += `<div class="p${i}-container">
-                                <input type="text" class="playerName${i}" placeholder="Nombre" id="${i}">
-                                    <select id="p${i}Sex">
-                                        <option value="hombre">H</option>
-                                        <option selected="selected" value="mujer">M</option>
-                                        <option value="gay">G</option>
-                                        <option value="lesbiana">L</option>
-                                    </select>
-                           </div>`;
-
-        }
-
-        document.getElementById("players").innerHTML = innerHTML;
-
-        document.getElementById("start-container").style.display = "none";
-
-        
-
-    }
 
 
 
@@ -478,5 +438,46 @@ function spinTheBottle(bottle) {
 
 }
 
+function returnTotal (){
+    return document.getElementById("numPlayers").value;
+}
+
+async function start() {
+    let startError = document.getElementById("startError");
+    let innerHTML = "";
+    const totalPlayers = await returnTotal();
+    startError.innerHTML = "";
 
 
+    if (totalPlayers == null || totalPlayers == "") {
+
+        startError.innerHTML = "Por favor Introduce un número de jugadores";
+        return;
+    }
+
+    if (totalPlayers < 3 || totalPlayers > 10) {
+        startError.innerHTML = "El número de jugadores debe estar entre 3 y 10";
+        return;
+    }
+
+
+    for (let i = 1; i <= totalPlayers; i++) {
+        innerHTML += `<div class="p${i}-container">
+                            <input type="text" class="playerName${i}" placeholder="Nombre" id="${i}">
+                                <select id="p${i}Sex">
+                                    <option value="hombre">H</option>
+                                    <option selected="selected" value="mujer">M</option>
+                                    <option value="gay">G</option>
+                                    <option value="lesbiana">L</option>
+                                </select>
+                       </div>`;
+
+    }
+
+    document.getElementById("players").innerHTML = innerHTML;
+
+    document.getElementById("start-container").style.display = "none";
+
+    
+
+}
