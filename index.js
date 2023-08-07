@@ -1,26 +1,28 @@
 
-
+//async function to return numPlayers.value
+async function returnTotal (){
+    return document.getElementById("numPlayers").value;
+}
 
 window.onload = function () {
 
     let startButton = document.getElementById("start");
-    let numPlayers = document.getElementById("numPlayers");
     let startError = document.getElementById("startError");
 
-    const totalPlayers = numPlayers.value;
-    let innerHTML = "";
+    
+    
 
 
-    startButton.addEventListener("click", init);
+    startButton.addEventListener("click", start);
+    
 
-    function init() {
-        delay(1000);
-        start();
-        
-    }
+    
+
+    
 
     async function start() {
-
+        let innerHTML = "";
+        const totalPlayers = await returnTotal();
         startError.innerHTML = "";
 
 
@@ -45,7 +47,7 @@ window.onload = function () {
                                         <option value="gay">G</option>
                                         <option value="lesbiana">L</option>
                                     </select>
-                              </div>`;
+                           </div>`;
 
         }
 
