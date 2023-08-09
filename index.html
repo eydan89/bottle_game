@@ -96,18 +96,18 @@
 
         }
 
-        #playersAndBottle{
-            display:flex;
-            flex-direction:row;
-            justify-content:center;
+        #playersAndBottle {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
             align-items: stretch;
-            gap:1%;
+            gap: 1%;
             overflow-wrap: anywhere;
             min-width: 25vh;
 
 
         }
-        
+
 
         .button {
             padding: 3vh 4vh;
@@ -216,7 +216,7 @@
         #bottle {
             width: 15vh;
             height: 15vh;
-            margin:0px;
+            margin: 0px;
 
         }
 
@@ -271,10 +271,10 @@
             font-size: 2.5vh;
         }
 
-        #action{
+        #action {
             font-size: 2.5vh;
             color: #ff0000;
-            text-align:center;
+            text-align: center;
             margin-bottom: 1vh;
             overflow-wrap: anywhere;
         }
@@ -288,6 +288,11 @@
 
         <input type="text" class="numPlayers" id="numPlayers" placeholder="Núm. Jugadores">
         <button class="button play-button" id="start">JUGAR</button>
+        <select id="lang">
+            <option value="EN">EN</option>
+            <option selected="selected" value="SP">SP</option>
+            <option value="FR">FR</option>
+        </select>
         <div id="startError"></div>
 
     </div>
@@ -307,7 +312,7 @@
             <div id="playersAndBottle">
                 <div class="frase" id="frase1">GIRA!</div>
                 <button class="spin-button" id="spin">
-                    
+
                     <img id="bottle" src="bottle.png" />
                 </button>
                 <div class="frase" id="frase2">GIRA!</div>
@@ -315,7 +320,7 @@
             <div id="action">...</div>
 
 
-           
+
 
         </div>
     </div>

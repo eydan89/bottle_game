@@ -1,6 +1,6 @@
 window.onload = function () {
 
-    
+
     document.getElementById("start").addEventListener("click", init);
     document.getElementById("play").addEventListener("click", play);
 }
@@ -8,6 +8,9 @@ window.onload = function () {
 
 async function init() {
     globalThis.totalPlayers = await returnTotal();
+    globalThis.lang = await returnLang();
+
+
 
     let startError = document.getElementById("startError");
     let innerHTML = "";
@@ -17,7 +20,7 @@ async function init() {
     startError.innerHTML = "";
 
 
-    if (globalThis.totalPlayers == null ||globalThis.totalPlayers == "") {
+    if (globalThis.totalPlayers == null || globalThis.totalPlayers == "") {
 
         startError.innerHTML = "Por favor Introduce un número de jugadores";
         return;
@@ -89,18 +92,11 @@ function play() {
     const players = jugadores;
     document.getElementById("spin").addEventListener("click", spin);
 
-    console.log(players)    
+    console.log(players)
 
     globalThis.players = players;
 
 }
-
-
-
-
-
-
-
 
 async function ruleta(iterations, role, random) {
     spinTheBottle(globalThis.bottle);
@@ -157,7 +153,7 @@ function devuelveNumAccion() {
     //returns a random number from 1 to 8
     let accion = Math.floor(Math.random() * 8) + 1;
     return accion;
-    
+
 }
 
 
@@ -183,50 +179,114 @@ function returnTotal() {
     return document.getElementById("numPlayers").value;
 }
 
+function returnLang() {
+    return document.getElementById("lang").value;
+}
+
 
 
 async function startGame() {
-    
+
 
     globalThis.partidas = [];
     globalThis.bottle = document.getElementById("bottle");
 
 
-    globalThis.acciones1 = {
-        1: " debe dar beso en la mejilla a ",
-        2: " debe abrazarse durante 2 segundos con ",
-        3: " debe dar un suave mordisquito en zona segura a ",
-        4: " debe acariciar en zona segura a ",
-        5: " debe quitar una prenda a ",
-        6: " debe lamer en zona segura a ",
-        7: " debe mirarse a los ojos durante 10 segundos con ",
-        8: " debe dar un masaje en los hombros durante 15 segundos a "
-    };
 
-    globalThis.acciones2 = {
-        1: " debe dar un pico a ",
-        2: " debe abrazar por detrás y oler el cuello de ",
-        3: " debe dar un suave mordisquito en zona ofrecida a ",
-        4: " debe acariciar en zona sexy a ",
-        5: " debe quitar una prenda a ",
-        6: " debe lamer en zona sexy a ",
-        7: " debe mirarse a los ojos a un palmo de distancia durante 10 segundos con ",
-        8: " debe dar un masaje (boca abajo en espalda y pelvis) durante 20 segundos a "
-    };
 
-    globalThis.acciones3 = {
-        1: " debe besarse apasionadamente con",
-        2: " debe abrazar por detrás y tocar el cuerpo durante 5 segundos a ",
-        3: " debe dar un suave mordisquito en zona sexy a ",
-        4: " debe acariciar en zona sexual a ",
-        5: " debe quitar una prenda (de ropa interior si es posible) a ",
-        6: " debe lamer en zona erógena a ",
-        7: " debe mirarse nariz con nariz durante 10 segundos con ",
-        8: " debe dar un masaje de cuerpo entero durante 20 segundos a "
-    };
+    if (globalThis.lang == "SP") {
+
+        globalThis.acciones1 = {
+            1: " debe dar beso en la mejilla a ",
+            2: " debe abrazarse durante 2 segundos con ",
+            3: " debe dar un suave mordisquito en zona segura a ",
+            4: " debe acariciar en zona segura a ",
+            5: " debe quitar una prenda a ",
+            6: " debe lamer en zona segura a ",
+            7: " debe mirarse a los ojos durante 10 segundos con ",
+            8: " debe dar un masaje en los hombros durante 15 segundos a "
+        };
+
+        globalThis.acciones2 = {
+            1: " debe dar un pico a ",
+            2: " debe abrazar por detrás y oler el cuello de ",
+            3: " debe dar un suave mordisquito en zona ofrecida a ",
+            4: " debe acariciar en zona sexy a ",
+            5: " debe quitar una prenda a ",
+            6: " debe lamer en zona sexy a ",
+            7: " debe mirarse a los ojos a un palmo de distancia durante 10 segundos con ",
+            8: " debe dar un masaje (boca abajo en espalda y pelvis) durante 20 segundos a "
+        };
+
+        globalThis.acciones3 = {
+            1: " debe besarse apasionadamente con",
+            2: " debe abrazar por detrás y tocar el cuerpo durante 5 segundos a ",
+            3: " debe dar un suave mordisquito en zona sexy a ",
+            4: " debe acariciar en zona sexual a ",
+            5: " debe quitar una prenda (de ropa interior si es posible) a ",
+            6: " debe lamer en zona erógena a ",
+            7: " debe mirarse nariz con nariz durante 10 segundos con ",
+            8: " debe dar un masaje de cuerpo entero durante 20 segundos a "
+        };
+    }
+
+    if (globalThis.lang == "EN") {
+
+        globalThis.acciones1 = {
+            1: " must give a kiss on the cheek to ",
+            2: " must hug for 2 seconds ",
+            3: " must give a soft bite in safe zone to ",
+            4: " must caress in safe zone to ",
+            5: " must take off a piece of clothing to ",
+            6: " must lick in safe zone to ",
+            7: " must look into the eyes for 10 seconds with ",
+            8: " must give a shoulder massage for 15 seconds to "
+        };
+
+        globalThis.acciones2 = {
+            1: " must give a peck to ",
+            2: " must hug from behind and smell the neck of ",
+            3: " must give a soft bite in offered zone to ",
+            4: " must caress in sexy zone to ",
+            5: " must take off a piece of clothing to ",
+            6: " must lick in sexy zone to ",
+            7: " must look into the eyes at one hand distance for 10 seconds with ",
+            8: " must give a massage (face down on back and pelvis) for 20 seconds to "
+        };
+
+        globalThis.acciones3 = {
+            1: " must kiss passionately with ",
+            2: " must hug from behind and touch the body for 5 seconds to ",
+            3: " must give a soft bite in sexy zone to ",
+            4: " must caress in sexual zone to ",
+            5: " must take off a piece of clothing (underwear if possible) to ",
+            6: " must lick in erogenous zone to ",
+            7: " must look nose to nose for 10 seconds with ",
+            8: " must give a full body massage for 20 seconds to "
+        };
+
+    }
     
+    if(globalThis.lang == "FR"){
+        globalThis.acciones1 = {
+            1: " doit donner un baiser sur la joue à ",
+            2: " doit s'embrasser pendant 2 secondes avec ",
+            3: " doit donner un petit coup de dents dans la zone sûre à ",
+            4: " doit caresser dans la zone sûre à ",
+            5: " doit enlever un vêtement à ",
+            6: " doit lécher dans la zone sûre à ",
+            7: " doit se regarder dans les yeux pendant 10 secondes avec ",
+            8: " doit faire un massage des épaules pendant 15 secondes à "
+        };
+    }   
+        
+
 
 }
+
+
+
+
 
 async function crearPartida(player, target, random2) {
 
@@ -368,7 +428,7 @@ async function spin() {
     document.getElementById("frase1").innerHTML = "...";
     document.getElementById("frase2").innerHTML = "...";
 
-    if ( document.getElementsByClassName("left-container")[0].style.pointerEvents != "none") {
+    if (document.getElementsByClassName("left-container")[0].style.pointerEvents != "none") {
         document.getElementsByClassName("error-message")[0].innerHTML = "Error! Debes ingresar los nombres de los jugadores y su sexo antes de girar la ruleta.";
         return;
     }
