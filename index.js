@@ -102,8 +102,8 @@ function play() {
 
 
 
-async function ruleta(iterations, role, random, bottle) {
-    spinTheBottle(bottle);
+async function ruleta(iterations, role, random) {
+    spinTheBottle(globalThis.bottle);
 
     for (let i = 0; i < iterations; i++) {
         oldPlayer = document.getElementsByClassName(role)[0];
@@ -156,11 +156,8 @@ function delay(time) {
 function devuelveNumAccion() {
     //returns a random number from 1 to 8
     let accion = Math.floor(Math.random() * 8) + 1;
-
-
-
-
     return accion;
+    
 }
 
 
@@ -227,28 +224,6 @@ async function startGame() {
         7: " debe mirarse nariz con nariz durante 10 segundos con ",
         8: " debe dar un masaje de cuerpo entero durante 20 segundos a "
     };
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     
 
 }
