@@ -4,8 +4,8 @@ window.onload = function () {
 
     document.getElementById("start").addEventListener("click", init);
     document.getElementById("play").addEventListener("click", play);
-    
-    
+
+
 }
 
 
@@ -35,21 +35,36 @@ async function init() {
     }
 
 
+    
+
+   
+
+
+    
+    innerHTML += `<div id = "players1">`
+
     for (let i = 1; i <= globalThis.totalPlayers; i++) {
-        innerHTML += `<div class="p${i}-container">
+        innerHTML += `  <div class="p${i}-container">
                             <input type="text" class="playerName${i}" placeholder="Nombre" id="${i}">
                                 <select id="p${i}Sex">
                                     <option value="hombre">H</option>
                                     <option selected="selected" value="mujer">M</option>
                                     <option value="gay">G</option>
                                     <option value="lesbiana">L</option>
-                                </select>
-                       </div>`;
+                                </select>  
 
+                        </div>`
+
+        if(i == 5){
+            innerHTML += `</div><div id = "players2">`
+        }
+                      
+          
     }
 
-    document.getElementById("players").innerHTML = innerHTML;
+    innerHTML += `</div>`
 
+    document.getElementById("players").innerHTML = innerHTML;
     document.getElementById("start-container").style.display = "none";
 
 
@@ -264,8 +279,8 @@ async function startGame() {
         };
 
     }
-    
-    if(globalThis.lang == "FR"){
+
+    if (globalThis.lang == "FR") {
         globalThis.acciones1 = {
             1: " doit donner un baiser sur la joue à ",
             2: " doit s'embrasser pendant 2 secondes avec ",
@@ -276,8 +291,8 @@ async function startGame() {
             7: " doit se regarder dans les yeux pendant 10 secondes avec ",
             8: " doit faire un massage des épaules pendant 15 secondes à "
         };
-    }   
-        
+    }
+
 
 
 }

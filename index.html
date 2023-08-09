@@ -160,11 +160,11 @@
 
         .players {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 10px;
-            margin-left: 20px;
-            margin-right: 10px;
-            margin-top: 25px;
+            margin-left: 2vh;
+            margin-right: 2vh;
+            margin-top: 3vh;
 
         }
 
@@ -208,7 +208,7 @@
         }
 
         input {
-            width: 23vh;
+            width: 15vh;
             height: 3vh;
             font-size: 2vh;
         }
@@ -278,6 +278,13 @@
             margin-bottom: 1vh;
             overflow-wrap: anywhere;
         }
+
+        #players1,#players2{
+            display: flex;
+            flex-direction: column;
+
+
+        }
     </style>
 </head>
 
@@ -300,6 +307,7 @@
         <div class="left-container">
             <div class="players" id="players">
                 <!--jugadores -->
+
             </div>
 
             <button class="button play-button" id="play">JUGAR</button>
@@ -318,7 +326,7 @@
                 <div class="frase" id="frase2">GIRA!</div>
             </div>
             <div id="action">...</div>
-W
+
         </div>
     </div>
 </body>
