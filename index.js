@@ -1,8 +1,11 @@
 window.onload = function () {
-
+    globalThis.partidas = [];
+    globalThis.bottle = document.getElementById("bottle");
 
     document.getElementById("start").addEventListener("click", init);
     document.getElementById("play").addEventListener("click", play);
+    
+    
 }
 
 
@@ -188,11 +191,6 @@ function returnLang() {
 async function startGame() {
 
 
-    globalThis.partidas = [];
-    globalThis.bottle = document.getElementById("bottle");
-
-
-
 
     if (globalThis.lang == "SP") {
 
@@ -306,8 +304,8 @@ async function crearPartida(player, target, random2) {
     let frase2 = document.getElementById("frase2");
 
 
-    frase1.innerHTML = "...";
-    frase2.innerHTML = "...";
+    frase1.innerHTML = "";
+    frase2.innerHTML = "";
 
     //sort alfabetically partida
     partida = partida.split(",").sort().join(",");
