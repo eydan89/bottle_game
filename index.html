@@ -99,9 +99,9 @@
         #playersAndBottle {
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: space-around;
             align-items: stretch;
-            gap: 1%;
+            gap: 10%;
             overflow-wrap: anywhere;
             min-width: 25vh;
 
@@ -318,14 +318,15 @@
         </div>
         <div class="right-container">
             <div id="playersAndBottle">
-                <div class="frase" id="frase1">GIRA!</div>
-                <button class="spin-button" id="spin">
-
-                    <img id="bottle" src="bottle.png" />
-                </button>
-                <div class="frase" id="frase2">GIRA!</div>
+                <div class="frase" id="frase1"></div>
+                <div id="vs"></div>
+                <div class="frase" id="frase2">GIRA LA BOTELLA!</div>
             </div>
-            <div id="action">...</div>
+            <div id="action"></div>
+            <button class="spin-button" id="spin">
+
+                <img id="bottle" src="bottle.png" />
+            </button>
 
         </div>
     </div>

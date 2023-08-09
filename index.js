@@ -371,9 +371,10 @@ async function crearPartida(player, target, random2) {
 
     frase1.innerHTML = `<div class="playerName">${jugador1}</div>`;
 
+
     await delay(2000);
 
-    document.getElementById("action").innerHTML = action.toUpperCase() + "<p>...</p>";
+    document.getElementById("action").innerHTML = action.toUpperCase();
 
     await delay(2000);
     await ruleta(35, "targetPlayer", random2, globalThis.bottle, globalThis.totalPlayers);
@@ -382,6 +383,8 @@ async function crearPartida(player, target, random2) {
 
     document.getElementById(random2).classList.add("targetPlayer");
 
+
+    document.getElementById("vs").innerHTML = "|";
     frase2.innerHTML = `<div class="playerName">${jugador2}</div>`;
 
 
@@ -438,8 +441,8 @@ async function spin() {
     }
 
 
-    document.getElementById("frase1").innerHTML = "...";
-    document.getElementById("frase2").innerHTML = "...";
+    document.getElementById("frase1").innerHTML = "";
+    document.getElementById("frase2").innerHTML = "";
 
     if (document.getElementsByClassName("left-container")[0].style.pointerEvents != "none") {
         document.getElementsByClassName("error-message")[0].innerHTML = "Error! Debes ingresar los nombres de los jugadores y su sexo antes de girar la ruleta.";
